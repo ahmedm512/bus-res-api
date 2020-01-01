@@ -18,7 +18,7 @@ db.select("bus_num")
 .where('reservation_number', '=', reservation_number)
 .then(res =>{
   busNum = res[0].bus_num;
-  console.log(busNum);
+
 })
 .then(()=>{
   db('buses').where('bus_num', '=', busNum)

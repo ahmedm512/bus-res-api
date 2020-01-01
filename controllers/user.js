@@ -28,11 +28,11 @@ const { email, bus_num } = req.body;
         .returning('reservation_number')
         .then(res_num => {
       	var resNum = res_num[0];
-        console.log("res_num",res_num);
+     
     	return trx('reserved_buses')
     	.select('bus_num').where('reservation_number', '=', res_num[0])
         .then(busesBus_num => {
-        	console.log('buses', busesBus_num[0].bus_num);
+        	
           return trx('buses').where('bus_num', '=', busesBus_num[0].bus_num)
         .increment('res_seats', 1)   
     	})
@@ -53,7 +53,7 @@ db.select("bus_num")
 .where('reservation_number', '=', reservation_number).andWhere('email', '=', email)
 .then(res =>{
   busNum = res[0].bus_num;
-  console.log(busNum);
+  
 })
 .then(()=>{
   db('buses').where('bus_num', '=', busNum)

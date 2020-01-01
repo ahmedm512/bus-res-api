@@ -47,7 +47,7 @@ const showUsersInBus = (db) =>  (req,res) => {
   db.select('users.email','name').from('reserved_buses')
   .innerJoin('users', 'users.email', 'reserved_buses.email')
   .where('reserved_buses.bus_num', '=', bus_num)
-  .then(users => { console.log(users); res.json(users)})
+  .then(users => { res.json(users)})
   .catch(err => res.status(400).json("cant get users", err))
 
 
