@@ -63,9 +63,9 @@ app.put('/decrementSeats', bus.decrementSeats(db));
 app.get('/bustable', bus.getTable(db));
 
 
-const PORT = process.env.PORT
-app.listen(4000, ()=>{
-	console.log(`app is running on port 4000`)
+const PORT = process.env.PORT;
+app.listen(PORT || 4000, ()=>{
+	console.log(`app is running on port ${PORT}`)
 })
 
 
